@@ -203,7 +203,7 @@ def visit_id(id):
     info(f"extracted data for {artist_name}")
 
     complete_job(id, data)
-    info(f"saved data for {artist_name}")
+    info(f"saved data for {artist_name}\n")
 
     period = random.randint(1, 5) * 0.5
     time.sleep(period)
