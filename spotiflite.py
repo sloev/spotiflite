@@ -64,13 +64,6 @@ def connect(filename):
     singleton.sqlite_connection = sqlite3.connect(filename)
 
 
-@contextmanager
-def commiting_cursor():
-    c = singleton.sqlite_connection.cursor()
-    yield c
-    singleton.sqlite_connection.commit()
-
-
 @cli_command
 def setup():
     """creates tables"""
@@ -142,6 +135,15 @@ def stats(ctx):
                 f"DB size: {human_readable_byte_size}"
             )
         )
+
+
+@contextmanager
+def commiting_cursor():
+    c = singleton.sqlite_connection.cursor()
+    try:
+        yield c
+    finally:
+        singleton.sqlite_connection.commit()
 
 
 def byte_size_to_human_readable(byte_size):
