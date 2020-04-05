@@ -188,7 +188,9 @@ def visit_id(id):
     info(f"visiting {id}")
     resp = requests.get(URL_TEMPLATE.format(id))
     if resp.status_code != 200:
-        error(f"Spotify gave error on {artist_id}, status:{resp.status_code}")
+        period = random.randint(2,10)
+        error(f"Spotify gave error on {id}, status:{resp.status_code}, sleeping {period} seconds\n")
+        time.sleep(period)
         return
 
     text = resp.text
