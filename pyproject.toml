@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "spotiflite"
+version = "0.0.1"
+description = "scrapes spotify starting from an artist id, stores in sqlite"
+authors = [
+    "sloev <johannes.valbjorn@gmail.com>",
+]
+license = "MIT"
+readme = "README.md"
+classifiers=[
+        "Intended Audience :: Developers",
+        "Natural Language :: English",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+]
+homepage = "https://github.com/sloev/spotiflite"
+repository = "https://github.com/sloev/spotiflite"
+keywords = ["spotify", "scraping", "sqlite"]
+exclude = ["assets"]
+include = [
+    "LICENSE",
+    "README.md",
+    "spotiflite.py"
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "^2.23.0"
+beautifulsoup4 = "^4.8.2"
+click = "^7.1.1"
+colorama = "^0.4.3"
+
+[tool.poetry.dev-dependencies]
+black = "^19.10b0"
+
+[tool.poetry.scripts]
+spotiflite = 'spotiflite:cli'
+
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
