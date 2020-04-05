@@ -15,6 +15,7 @@ from colorama.ansi import Fore, Back, Style, clear_line, Cursor, clear_screen, s
 URL_TEMPLATE = "https://open.spotify.com/artist/{}/about"
 SPOTIFY_ENTITY_PATTERN = r".*?\Spotify.Entity = (.*);.*"
 GREEN = Style.BRIGHT + Fore.GREEN
+RED = Style.BRIGHT + Fore.RED
 MAGENTA = Style.BRIGHT + Fore.MAGENTA
 
 SPLASH = (
@@ -157,6 +158,9 @@ def byte_size_to_human_readable(byte_size):
 def info(message):
     click.echo(GREEN + message + Style.RESET_ALL)
 
+def error(message):
+    click.echo(GREEN + message + Style.RESET_ALL)
+
 
 def create_job(referrer_id, id):
     with commiting_cursor() as cur:
@@ -175,7 +179,7 @@ def complete_job(id, data):
 def get_jobs():
     with commiting_cursor() as cur:
         results = cur.execute(
-            "SELECT id from spotify_data where LENGTH(data) = 0"
+            "SELECT id from spotify_data where LENGTH(data) = 0 limit 100"
         ).fetchall()
         return [result[0] for result in results]
 
@@ -184,7 +188,8 @@ def visit_id(id):
     info(f"visiting {id}")
     resp = requests.get(URL_TEMPLATE.format(id))
     if resp.status_code != 200:
-        raise RuntimeError("spotify gave ", resp.status_code, resp.text)
+        error(f"Spotify gave error on {artist_id}, status:{resp.status_code}")
+        return
 
     text = resp.text
 
