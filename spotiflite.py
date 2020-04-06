@@ -158,6 +158,7 @@ def byte_size_to_human_readable(byte_size):
 def info(message):
     click.echo(GREEN + message + Style.RESET_ALL)
 
+
 def error(message):
     click.echo(GREEN + message + Style.RESET_ALL)
 
@@ -188,8 +189,10 @@ def visit_id(id):
     info(f"visiting {id}")
     resp = requests.get(URL_TEMPLATE.format(id))
     if resp.status_code != 200:
-        period = random.randint(2,10)
-        error(f"Spotify gave error on {id}, status:{resp.status_code}, sleeping {period} seconds\n")
+        period = random.randint(2, 10)
+        error(
+            f"Spotify gave error on {id}, status:{resp.status_code}, sleeping {period} seconds\n"
+        )
         time.sleep(period)
         return
 
