@@ -160,7 +160,7 @@ def info(message):
 
 
 def error(message):
-    click.echo(GREEN + message + Style.RESET_ALL)
+    click.echo(RED + message + Style.RESET_ALL)
 
 
 def create_job(referrer_id, id):
@@ -202,7 +202,7 @@ def visit_id(id):
     artist_ids = {
         a.split("artist/", 1)[1]
         for a in (link["href"] for link in html.find_all("a"))
-        if "artist/" in a
+        if "artist/" in a and 'playlist' not in a
     }
     artist_ids = artist_ids - {id}
     info(f"got {len(artist_ids)} artist ids")
@@ -217,7 +217,7 @@ def visit_id(id):
     complete_job(id, data)
     info(f"saved data for {artist_name}\n")
 
-    period = random.randint(1, 5) * 0.5
+    period = random.randint(1, 50) * 0.1
     time.sleep(period)
 
 
