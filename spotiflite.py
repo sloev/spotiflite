@@ -202,7 +202,7 @@ def visit_id(id):
     artist_ids = {
         a.split("artist/", 1)[1]
         for a in (link["href"] for link in html.find_all("a"))
-        if "artist/" in a and 'playlist' not in a
+        if "artist/" in a and "playlist" not in a
     }
     artist_ids = artist_ids - {id}
     info(f"got {len(artist_ids)} artist ids")
