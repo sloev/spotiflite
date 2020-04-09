@@ -2,7 +2,7 @@
 
 # Spotiflite
 
-[![Build Status](https://travis-ci.org/sloev/spotiflite.svg?branch=master)](https://travis-ci.org/sloev/spotiflite) [![Latest Version](https://img.shields.io/pypi/v/spotiflite.svg)](https://pypi.python.org/pypi/spotiflite)
+[![Build Status](https://travis-ci.com/sloev/spotiflite.svg?branch=master)](https://travis-ci.com/sloev/spotiflite) [![Latest Version](https://img.shields.io/pypi/v/spotiflite.svg)](https://pypi.python.org/pypi/spotiflite)
 
 Scrapes Spotify and dumps data to a sqlite3 database.
 
