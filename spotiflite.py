@@ -77,9 +77,9 @@ def setup():
             """
             CREATE TABLE spotify_data
             (
-                referer_id text, 
-                id text, 
-                data text, 
+                referer_id varchar(22), 
+                id varchar(22), 
+                data json, 
                 created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """
@@ -251,7 +251,7 @@ def visit_id(id):
     complete_job(id, data)
     info(f"saved data for {artist_name}\n")
 
-    period = random.randint(1, 50) * 0.1
+    period = random.randint(1, 25) * 0.1
     time.sleep(period)
 
 
