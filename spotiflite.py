@@ -73,7 +73,8 @@ def setup():
         return
 
     with commiting_cursor() as cur:
-        cur.execute("""
+        cur.execute(
+            """
             CREATE TABLE spotify_data
             (
                 referer_id text, 
@@ -81,7 +82,8 @@ def setup():
                 data text, 
                 created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
-        """)
+        """
+        )
         cur.execute(
             """
         create unique index spotify_data_id_index on spotify_data ( id )
@@ -170,7 +172,8 @@ def error(message):
 
 def create_job(referrer_id, id):
     with commiting_cursor() as cur:
-        cur.execute("""
+        cur.execute(
+            """
             INSERT 
             or     IGNORE 
             into   spotify_data 
@@ -192,22 +195,27 @@ def create_job(referrer_id, id):
 
 def complete_job(id, data):
     with commiting_cursor() as cur:
-        cur.execute("""
+        cur.execute(
+            """
             UPDATE spotify_data 
             SET    data = ? 
             WHERE  id = ? 
-        """, (data, id))
+        """,
+            (data, id),
+        )
 
 
 def get_jobs():
     with commiting_cursor() as cur:
-        results = cur.execute("""
+        results = cur.execute(
+            """
             SELECT id 
             FROM   spotify_data 
             WHERE  Length(data) = 0 
             ORDER  BY created ASC 
             LIMIT  200 
-        """).fetchall()
+        """
+        ).fetchall()
         return [result[0] for result in results]
 
 
