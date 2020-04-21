@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "spotiflite"
-version = "1.0.0"
+version = "1.0.1"
 description = "scrapes spotify starting from an artist id, stores in sqlite"
 authors = [
     "sloev <johannes.valbjorn@gmail.com>",
@@ -16,7 +16,7 @@ classifiers=[
 homepage = "https://github.com/sloev/spotiflite"
 repository = "https://github.com/sloev/spotiflite"
 keywords = ["spotify", "scraping", "sqlite"]
-exclude = ["assets"]
+exclude = ["assets", "cloudflare"]
 include = [
     "LICENSE",
     "README.md",
