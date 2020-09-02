@@ -2,6 +2,8 @@
 
 # Spotiflite
 
+<a href="https://www.buymeacoffee.com/sloev" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-pink.png" alt="Buy Me A Coffee" height="51px" width="217px"></a>
+
 [![Build Status](https://travis-ci.com/sloev/spotiflite.svg?branch=master)](https://travis-ci.com/sloev/spotiflite) [![Latest Version](https://img.shields.io/pypi/v/spotiflite.svg)](https://pypi.python.org/pypi/spotiflite)
 
 *(For the hosted api version checkout [spotiflite on rapidapi](https://rapidapi.com/sloev/api/spotiflite/endpoints) sourcecode for api is [here](https://github.com/sloev/spotiflite/raw/master/cloudflare/worker.js))* 
